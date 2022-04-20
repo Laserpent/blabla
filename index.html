@@ -31,7 +31,7 @@
             width: 100%;
             z-index: 1;
         }
-        .cover_a {
+        .cover-a {
             position: absolute;
             top: 21%;
             bottom: 0;
@@ -61,7 +61,7 @@
             font-size: 0vw;
             text-align: center;
         }
-        #before_sec{
+        #before-sec{
             font-size: 3.9vw;
             color: #5fb063;
             user-select: none;
@@ -90,13 +90,13 @@
     </header>
     <div class="content">
         <img src="./empty/content.png" />
-        <div class="cover_a"></div>
+        <div class="cover-a"></div>
         <div class="text">
             <div class="name">
                 <span contenteditable="true" class="place">已登记</span>
             </div>
             <div class="date">
-                <span id="before_sec"></span>
+                <span id="before-sec"></span>
                 <span id="sec"></span>
             </div>
             <span id="test"></span>
@@ -112,7 +112,7 @@
         var hour = (d.getHours() < 10) ? ("0" + d.getHours()) : d.getHours();
         var min = (d.getMinutes() < 10) ? ("0" + d.getMinutes()) : d.getMinutes();
         var sec = (d.getSeconds() < 10) ? ("0" + d.getSeconds()) : d.getSeconds();
-        document.getElementById("before_sec").innerHTML = (month + "-" + date + " " + hour + ":" + min + ":");
+        document.getElementById("before-sec").innerHTML = (month + "-" + date + " " + hour + ":" + min + ":");
     }
     function showSec(){
         var d = new Date();
