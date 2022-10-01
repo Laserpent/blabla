@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="format-detection" content="telephone=no" /> 
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+    <title>&#x4e00&#x7801&#x901a&#x884c</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: "PingFang SC", Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Heiti SC", STXihei, "Microsoft YaHei", SimHei, "WenQuanYi Micro Hei";
+        }
+        html,body{
+            background-color: #f4f4f6;
+        }
+        img{
+            display: block;
+            width: 100%;
+            height: auto;
+            user-select: none;
+        }
+        .header{
+            position: fixed;
+            display: flex;
+            width: 100%;
+            z-index: 999;
+        }
+        .content{
+            position: relative;
+            width: 100%;
+            z-index: 1;
+        }
+        .cover-a {
+            position: absolute;
+            top: 21%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            width: 100%;
+            z-index: 2;
+        }
+        .name{
+            position: absolute;
+            top: 18.1%;
+            left: 0%;
+            width: 100%;
+            color: #333333;
+            font-size: 0vw;
+            text-align: center;
+        }
+        .place{
+            font-size: 4.3vw;
+        }
+        .date{
+            position: absolute;
+            top: 21.2%;
+            left: 0%;
+            width: 100%;
+            font-size: 0vw;
+            text-align: center;
+        }
+        #before-sec{
+            font-size: 3.9vw;
+            color: #5fb063;
+            user-select: none;
+        }
+        #sec{
+            font-size: 3.9vw;
+            color: #5fb063;
+            user-select: none;
+        }
+        #test{
+            position: absolute;
+            top: 55.6%;
+            left: 9.2%;
+            width: 39.5%;
+            color: #333333;
+            font-size: 3.8vw;
+            user-select: none;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <img src="./empty/head.png" />
+    </header>
+    <div class="content">
+        <img src="./empty/content.png" />
+        <div class="cover-a"></div>
+        <div class="text">
+            <div class="name">
+                <span contenteditable="true" class="place">&#x5df2&#x767b&#x8bb0</span>
+            </div>
+            <div class="date">
+                <span id="before-sec">10-27 15:23:</span>
+                <span id="sec">56</span>
+            </div>
+            <span id="test">2023-09-30</span>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    function showDate(){
+        let d = new Date();
+        let month = ((d.getMonth() + 1) < 10) ? ("0" + (d.getMonth() + 1)) : (d.getMonth() + 1);
+        let date = (d.getDate() < 10) ? ("0" + d.getDate()) : d.getDate();
+        let hour = (d.getHours() < 10) ? ("0" + d.getHours()) : d.getHours();
+        let min = (d.getMinutes() < 10) ? ("0" + d.getMinutes()) : d.getMinutes();
+        let sec = (d.getSeconds() < 10) ? ("0" + d.getSeconds()) : d.getSeconds();
+        document.getElementById("before-sec").innerHTML = (month + "-" + date + " " + hour + ":" + min + ":");
+    }
+    function showSec(){
+        let d = new Date();
+        let month = ((d.getMonth() + 1) < 10) ? ("0" + (d.getMonth() + 1)) : (d.getMonth() + 1);
+        let date = (d.getDate() < 10) ? ("0" + d.getDate()) : d.getDate();
+        let hour = (d.getHours() < 10) ? ("0" + d.getHours()) : d.getHours();
+        let min = (d.getMinutes() < 10) ? ("0" + d.getMinutes()) : d.getMinutes();
+        let sec = (d.getSeconds() < 10) ? ("0" + d.getSeconds()) : d.getSeconds();
+        document.getElementById("sec").innerHTML = (sec);
+    }
+    function showTest(){
+        let d = new Date();
+        d.setTime(d.getTime()-24*60*60*1000-17*60*1000);
+        let month = ((d.getMonth() + 1) < 10) ? ("0" + (d.getMonth() + 1)) : (d.getMonth() + 1);
+        let date = d.getDate();
+        let hour = (d.getHours() < 10) ? ("0" + d.getHours()) : d.getHours();
+        let min = (date < 7) ? (date + 53) : (date * 2 - 13);
+        min = (min < 10) ? ("0" + min) : min;
+        document.getElementById("test").innerHTML = (d.getFullYear() + "-" + month + "-" + date);
+    }
+    showTest()
+    setInterval(showDate, 1000)
+    setInterval(showSec, 1000)
+</script>
+</html>
