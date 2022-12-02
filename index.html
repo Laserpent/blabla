@@ -7,30 +7,37 @@
     <meta name="format-detection" content="telephone=no" /> 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="apple-touch-icon-precomposed" sizes="any" href="empty/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="any"  href="empty/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" />
-    <title>&#x4e00&#x7801&#x901a&#x884c</title>
+    <title>&#x6e56&#x5317&#x573a&#x6240&#x7801</title>
     <style>
-        *{
+        * {
             padding: 0;
             margin: 0;
-            font-family: "PingFang SC",Helvetica,Arial,sans-serif;
+            font-family: "PingFang SC", sans-serif;
         }
-        html,body{
+        html,body {
             background-color: #f4f4f6;
         }
-        img{
+        img {
             display: block;
             width: 100%;
             height: auto;
             user-select: none;
         }
-        .header{
+        .header {
             position: fixed;
             display: flex;
             width: 100%;
             z-index: 999;
         }
-        .content{
+        .io {
+            display: inline;
+            position: absolute;
+            top: -50px;
+        }
+        .content {
             position: relative;
             width: 100%;
             z-index: 1;
@@ -45,7 +52,17 @@
             width: 100%;
             z-index: 2;
         }
-        .name{
+        .cover-b {
+            position: absolute;
+            top: 79%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6%;
+            width: 100%;
+            z-index: 2;
+        }
+        .name {
             position: absolute;
             top: 18.1%;
             left: 0%;
@@ -54,34 +71,34 @@
             font-size: 0vw;
             text-align: center;
         }
-        .place{
+        .place {
             font-size: 4.3vw;
         }
-        .date{
+        .date {
             position: absolute;
-            top: 21.2%;
+            top: 21.3%;
             left: 0%;
             width: 100%;
             font-size: 0vw;
             text-align: center;
         }
-        #before-sec{
+        #before-sec {
             font-size: 3.9vw;
             color: #5fb063;
             user-select: none;
         }
-        #sec{
+        #sec {
             font-size: 3.9vw;
             color: #5fb063;
             user-select: none;
         }
-        #test{
+        #test {
             position: absolute;
-            top: 55.6%;
+            top: 56.3%;
             left: 9.2%;
             width: 39.5%;
-            color: #333333;
-            font-size: 3.8vw;
+            color: #ffffff;
+            font-size: 3.1vw;
             user-select: none;
             text-align: center;
         }
@@ -93,11 +110,13 @@
         <img src="./empty/head.png" />
     </header>
     <div class="content">
+        <img class="io" id="io" src="./empty/io.png" />
         <img src="./empty/content.png" />
         <div class="cover-a"></div>
+        <div class="cover-b" onclick="enter()"></div>
         <div class="text">
             <div class="name">
-                <span contenteditable="true" class="place">&#x5df2&#x767b&#x8bb0</span>
+                <span contenteditable="true" class="place" id="place">&#x5df2&#x767b&#x8bb0</span>
             </div>
             <div class="date">
                 <span id="before-sec">10-27 15:23:</span>
@@ -117,14 +136,6 @@
         let min = (d.getMinutes() < 10) ? ("0" + d.getMinutes()) : d.getMinutes();
         let sec = (d.getSeconds() < 10) ? ("0" + d.getSeconds()) : d.getSeconds();
         document.getElementById("before-sec").innerHTML = (month + "-" + date + " " + hour + ":" + min + ":");
-    }
-    function showSec(){
-        let d = new Date();
-        let month = ((d.getMonth() + 1) < 10) ? ("0" + (d.getMonth() + 1)) : (d.getMonth() + 1);
-        let date = (d.getDate() < 10) ? ("0" + d.getDate()) : d.getDate();
-        let hour = (d.getHours() < 10) ? ("0" + d.getHours()) : d.getHours();
-        let min = (d.getMinutes() < 10) ? ("0" + d.getMinutes()) : d.getMinutes();
-        let sec = (d.getSeconds() < 10) ? ("0" + d.getSeconds()) : d.getSeconds();
         document.getElementById("sec").innerHTML = (sec);
     }
     function showTest(){
@@ -138,8 +149,18 @@
         min = (min < 10) ? ("0" + min) : min;
         document.getElementById("test").innerHTML = (d.getFullYear() + "-" + month + "-" + dateFull);
     }
+    function enter(){
+        document.getElementById("io").style.display = "none";
+    }
+
     showTest()
     setInterval(showDate, 1000)
-    setInterval(showSec, 1000)
+
+    let urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.get("id")) {
+        if(urlParams.get("id") == "356F8CB14A4C44AE9A6DEF45868696EF") {
+            document.getElementById("place").textContent = "\u9510\u521b\u4e2d\u5fc3";
+        }
+    }
 </script>
 </html>
